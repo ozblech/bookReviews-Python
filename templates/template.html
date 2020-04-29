@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			margin: 0 auto;
+		    padding: 0 16px;
+		    color: #333333;
+		    font-family: arial;
+		    background: linear-gradient(to right, #FFE0BC , #E8D5D5); /* Standard syntax */
+		}
+	</style>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<div class="container">
+		{% if session["user"].id %}
+			<header class="float-right">
+		    <a href ="/" class="mr-4">Log-Out</a>
+		    <a href ="/search">Search A Book </a>
+			</header>
+		{% endif %}
+
+		{% block body %}
+		{% endblock %}
+	</div>
+</body>
+</html>

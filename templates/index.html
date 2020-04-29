@@ -1,0 +1,47 @@
+{% extends "template.html" %}
+
+{% block title %}
+	Hello
+{% endblock %}
+
+{% block body %}
+	<div class="nav justify-content-center">
+		<h1>Hello</h1>
+	</div>
+	<!-- Default form login -->
+	<form 
+	class="text-center border border-light p-5 col-lg-5 col-sm-10 mx-auto" 
+	action="{{ url_for('loginUser') }}"
+	method="post"
+	>
+
+	    <p class="h4 mb-4">Sign in</p>
+
+	    <!-- Email -->
+	    <input 
+	    type="email" 
+	    id="defaultLoginFormEmail" 
+	    class="form-control mb-4" 
+	    placeholder="E-mail"
+	    name="email"
+	    >
+
+	    <!-- Password -->
+	    <input 
+	    type="password" 
+	    id="defaultLoginFormPassword" 
+	    class="form-control mb-4" 
+	    placeholder="Password"
+	    name="password"
+	    >
+
+
+	    <!-- Sign in button -->
+	    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+
+	    <!-- Register -->
+	    <p>Not a member?
+	        <a href="{{ url_for('register') }}">Register</a>
+	    </p>
+	</form>
+{% endblock %}

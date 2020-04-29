@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block title %}
+	User
+{% endblock %}
+
+{% block body %}
+	<h1>User Details</h1>
+	<dl class="row">
+		  <dt class="col-sm-2">Name:</dt>
+		  <dd class="col-sm-10">{{ session["user"].name }}</dd>
+
+		  <dt class="col-sm-2">Email:</dt>
+		  <dd class="col-sm-10">{{ session["user"].email }}</dd>
+
+		  <dt class="col-sm-2">Id</dt>
+		  <dd class="col-sm-10">{{ session["user"].id }}</dd>
+
+	</dl>
+	<br>
+
+	<a href="{{ url_for('search') }}" class="btn btn-primary btn-lg">Search a book</a>
+
+
+{% endblock %}

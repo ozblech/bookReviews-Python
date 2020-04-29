@@ -1,0 +1,97 @@
+{% extends "template.html" %}
+
+{% block title %}
+	Book
+{% endblock %}
+
+{% block header %}
+	<header class="float-right">
+	    <a href ="/" class="mr-4">Log-Out</a>
+	    <a href ="/searchByISBN">Search A Book </a>
+	</header>
+{% endblock %}
+
+{% block body %}
+	<h1>Book</h1>
+		<dl class="row">
+		  <dt class="col-sm-2">Title:</dt>
+		  <dd class="col-sm-10">{{ book.title }}</dd>
+
+		  <dt class="col-sm-2">Author</dt>
+		  <dd class="col-sm-10">{{ book.author }}</dd>
+
+		  <dt class="col-sm-2">Year</dt>
+		  <dd class="col-sm-10">{{ book.year }}</dd>
+
+		  <dt class="col-sm-2">ISBN</dt>
+		  <dd class="col-sm-10">{{ book.isbn }}</dd>
+		</dl>
+	{% if reviews %}
+		
+		<h1>Rating Statistics:</h1>
+		<dl class="row">
+		  <dt class="col-sm-2">Average Rating:</dt>
+		  <dd class="col-sm-10">{{ goodReadsData.books[0].average_rating }}</dd>
+
+		  <dt class="col-sm-2">Number of Ratings</dt>
+		  <dd class="col-sm-10">{{ goodReadsData.books[0].ratings_count }}</dd>
+		</dl>
+		<h1>Reviews</h1>
+		<dl class="row">
+			{% for review in reviews %}
+				<dd class="col-sm-2">Rating: {{ review.rate }}</dd>
+			 	<dd class="col-sm-10">By: {{ review.username }}</dd>
+			 	<br>
+				<dd class="col-sm-12 mb-4 text-monospace h4">"{{ review.comment }}."</dd>		 
+			{% endfor %}
+		</dl>
+	{% endif %}
+
+	{% if goodReadsData.books %}
+		<h1>GoodReads Rating:</h1>
+		<dl class="row">
+		  <dt class="col-sm-2">Average Rating:</dt>
+		  <dd class="col-sm-10">{{ goodReadsData.books[0].average_rating }}</dd>
+
+		  <dt class="col-sm-2">Number of Ratings</dt>
+		  <dd class="col-sm-10">{{ goodReadsData.books[0].ratings_count }}</dd>
+		</dl>
+	{% endif %}
+
+		<form action="{{ url_for('reviewPost') }}" method="post">
+		  <div class="form-group">
+		    <label for="formGroupExampleInput">Leave a review:</label>
+		    <input 
+			    type="text" 
+			    class="form-control" 
+			    id="formGroupExampleInput" 
+			    placeholder="Leave a review"
+			    name="review"
+		    >
+		    <label for="formGroupExampleInput" class="pt-2">Rate this book:</label>
+		    <br>
+		    <div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value=1>
+			  <label class="form-check-label" for="inlineRadio1">1</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value=2>
+			  <label class="form-check-label" for="inlineRadio2">2</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value=3>
+			  <label class="form-check-label" for="inlineRadio3">3</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value=4>
+			  <label class="form-check-label" for="inlineRadio4">4</label>
+			</div>
+			<div class="form-check form-check-inline">
+			  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value=5>
+			  <label class="form-check-label" for="inlineRadio5">5</label>
+			</div>
+			<br>
+			<button class="btn btn-primary btn-lg" type="submit">Submit</button>
+		  </div>
+		</form>
+{% endblock %}

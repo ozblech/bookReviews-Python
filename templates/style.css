@@ -1,0 +1,8 @@
+body {
+    margin: 0 auto;
+    padding: 0 16px;
+    color: #333333;
+    font-family: arial;
+    background: linear-gradient(to right, rgb(132,132,132) , blue); /* Standard syntax */
+   
+}
